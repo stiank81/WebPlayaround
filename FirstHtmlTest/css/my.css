@@ -1,8 +1,7 @@
 
 #button { margin:10px }
 
-a { text-decoration: none; font-style: italic; color:steelblue }
+a { text-decoration: none; font-style: italic; }
 h1,h2 { color:DimGrey }
-p { color: }
-div, footer { background: LightGray }
+footer { background: LightGray }
 body { background: GhostWhite }

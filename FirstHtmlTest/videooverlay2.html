@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Video-canvas test</title>
+
+	<link rel="stylesheet" type="text/css" href="css/squaregrid.css" />
+	<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+
+
+    <script>
+		function setupButtonAction(){
+			$('#toggleBtn').click(function(){
+				$('#videoelm').player.play(); // What's the right function for this...? 
+			});			
+		}
+		
+		function fillImageInCanvas(){
+			fillImageInCanvas(20, 50);
+		}
+
+		function fillImageInCanvas(x, y){
+			var ctx = document.getElementById('overlay').getContext('2d');  
+			var img = new Image(); 
+			img.onload = function(){
+				ctx.drawImage(img, x, y, 100, 100);
+			};
+			img.src = "media/firefox.png"; 
+		}
+		
+		function clearImageInCanvas(){
+			var ctx = document.getElementById('overlay').getContext('2d');  
+			ctx.clearRect(0, 0, 300, 300); 
+		}
+		
+		var movingX = -50; 
+		
+		function startAnimationIn(){
+			movingX = -50; 
+			updateImage();
+			setInterval(updateImage, 50);
+		}
+
+		function updateMovingX(max){
+			if (movingX < max)
+				movingX += 1;			
+		}
+
+		function updateImage(){
+			var ctx = document.getElementById('overlay').getContext('2d');
+			updateMovingX(20);
+			// ctx.clearRect(0, 0, 200, 200);
+			fillImageInCanvas(movingX, 50) 
+		}
+		
+		var overlayIn = false; 
+		
+		function toggleOverlay(){
+			if (overlayIn){
+				clearImageInCanvas(); 
+			} else {
+				startAnimationIn(); 
+				//fillImageInCanvas();
+			}
+			overlayIn = !overlayIn; 
+		}
+		
+		$(document).ready(function() {
+			setupButtonAction(); 
+			// fillImageInCanvas(); 
+		});
+		
+	</script>
+	
+	<style>
+		video
+		{
+			z-index:-1;
+		}
+		
+		canvas
+		{
+			position:absolute;
+			left:0px;
+			top:0px;
+		}
+	</style>
+  </head>
+  <body>
+	<!-- <canvas id="container"></canvas> -->
+	
+	<video z-index="-1" id="videoelm" style="border:2px solid gray; background:black" width="800" height="500" src="media/evil.webm" controls poster="media/evil.jpg">
+		<p>Try this page in a browser that supports HTML5.</p>
+	</video>
+	<canvas id="overlay" width="300" height="300"></canvas>
+	
+	<div class="clear"></div>
+	
+	<button id="toggleBtn" onclick="toggleOverlay()">Play</button>
+	<button id="toggleBtn" onclick="toggleOverlay()">Toggle overlay</button>
+	
+	<!-- <img src="media/firefox.png" /> --> 
+	
+  </body>
+</html>

@@ -8,9 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 		<title>new_file</title>
-		<meta name="description" content="" />
-		<meta name="generator" content="Studio 3 http://aptana.com/" />
-		<meta name="author" content="Embigo" />
+		<meta name="description" content="Web-testpage" />
+		<meta name="author" content="Stian Karlsen" />
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
@@ -22,16 +21,110 @@
 		<link rel="stylesheet" type="text/css" href="css/text_rtl.css" />
 		<link rel="stylesheet" type="text/css" href="css/my.css" />
 		
-		<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+		<style>
+		    a.weighted { font-weight: bold; }
+		</style>
+		
+		<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>	
 		<script>
 			$(function() {
 				$("button").button();
 				$("button").click(function()
 				{
-					alert("Hello!");
-				});				
+					if ($("a").hasClass("weighted"))
+						$("a").removeClass("weighted");
+				 	else 
+						$("a").addClass("weighted");
+				});		
+				
+				$("#jqtoggle").click(function(){
+					// $("#jqlnk").
+				});	
+				
+				$("#fireImg").click(function(){
+					alert("fireimg.click");
+				});
 			});
+		</script>
+		<script>	
+			function myCallback(){
+				alert("called back..!");
+			}
+		
+		    $(document).ready(function() {
+			   	$("a").click(function(event){
+				    event.preventDefault(); 
+				    $(this).hide("slow");
+					// funker ikke...? $.get('test.html', myCallBack);
+
+					setImageInCanvas();					
+				}); 
+			});
+			
+			
+			function setImageInCanvas(){
+				// $("#TestVas").css({ "background-color": "yellow"});
+				var elm = $("#TestVas"); 
+				// elm.css({ "background-color": "yellow"});
+
+				var context = elm.getContext('2d');
+				if (!context || !context.drawImage) {
+					alert("Could not get context..!")
+				    return;
+				}
+
+				// Create a new image.
+				var img = new Image();
+				//img.src = 'media/firefox.png';
+				//context.drawImage(img, 0, 0);
+		  		
+		        // Once it's loaded draw the image on the canvas.
+			  	img.addEventListener('load', function () {
+				
+					// Original resolution: x, y.
+					context.drawImage(this, 0, 0);
+
+					// Now resize the image: x, y, w, h.
+					//context.drawImage(this, 160, 0, 120, 70);
+
+				    // Crop and resize the image: sx, sy, sw, sh, dx, dy, dw, dh.
+				    //context.drawImage(this, 8, 20, 140, 50, 0, 150, 350, 70);
+				  }, false);
+
+				  img.src = 'media/firefox.png';
+				
+			}
+			
+			/*
+			var elem = document.getElementById('myCanvas');
+			  if (!elem || !elem.getContext) {
+			    return;
+			  }
+
+			  // Get the canvas 2d context.
+			  var context = elem.getContext('2d');
+			  if (!context || !context.drawImage) {
+			    return;
+			  }
+
+			  // Create a new image.
+			  var img = new Image();
+
+			  // Once it's loaded draw the image on the canvas.
+			  img.addEventListener('load', function () {
+			    // Original resolution: x, y.
+			    context.drawImage(this, 0, 0);
+
+			    // Now resize the image: x, y, w, h.
+			    context.drawImage(this, 160, 0, 120, 70);
+
+			    // Crop and resize the image: sx, sy, sw, sh, dx, dy, dw, dh.
+			    context.drawImage(this, 8, 20, 140, 50, 0, 150, 350, 70);
+			  }, false);
+
+			  img.src = 'images/150x150opera9.gif';
+			*/
 		</script>	
 		
 	</head>
@@ -48,16 +141,32 @@
 				<div class ="sqParent">
 					<div class="sg-11">
 						<img src="http://placekitten.com/308/250" />
+						<canvas id="TestVas" width="300" height="300" style="border:4px solid red"></canvas>
+						<image id="fireImg" src="media/firefox.png" width="50" height="50"></image>
 						<nav>
 							<p><a href="/">Home</a></p>
 							<p><a href="/contact">Contact</a></p>
+							<p><a id="jqlnk" href="http://jquery.com/">jQuery</a></p>
 						</nav>
 					</div>
 										
 					<div class="sg-23">
 						<h1>Main region</h1>
-						<p>4. november 2008 er en merkedag i Barack Obamas liv, og i den amerikanske historien. Da gikk den demokratiske kandidaten nemlig seirende ut av presidentvalget, så det er ikke vanskelig å tenke seg at minnene om dette fortsatt er kjære for Obama. Men presidenten bør ha fått med seg at vi skriver 2011 nå. Det er det vel heller ingen som tviler på at han har, men da han skulle signere gjesteboka i Westminster Abbey i London gikk presidenten på en skikkelig bommert. Han åpnet godt, må vite, og kom med en forventet høflig kommentar.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 						<button id="button">Read more</button>						
+						<p id="test">Some text</p>
+						<button id="button2">Toggle a-class</button>						
+						<button id="jqtoggle">Toggle jQuery-link</button>
+						<div>						
+						<video class="player" src="media/evil.webm" width="620" controls="controls" >
+							Your browser does not support the video tag!
+
+							So, where can you download a WebM compatible browser?
+							Google Chrome -- Currently only available in Chromium
+							Firefox -- Grab a Firefox WebM nightly build
+							Opera -- Opera 10.54 has WebM support
+						</video>
+						</div>
 					</div>
 				</div>
 				
@@ -67,24 +176,24 @@
 					<div class="sg-11">
 						<h2>Column 1</h2>
 						<image src="http://placekitten.com/308/100" />
-						<p>En sivil afghaner mistet livet da en norsk soldat avfyrte et vådeskudd i Faryab-provinsen onsdag, opplyser Forsvaret. Det var under klargjøring av en granatkaster på kjøretøy inne i leiren til det afghanske politihovedkvarteret i Almar-distriktet — 20 kilometer vest for den norske leiren i Maimana — at en granaten gikk av, opplyser Forsvaret.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</pface>
 					</div>
 					<div class="sg-11">
 						<h2>Column 2</h2>
 						<image src="http://placekitten.com/308/100" />
-						<p>To sivile afghanere som jobbet med vedlikehold på stedet, ble truffet av splinter fra granaten. De norske soldatene iverksatte umiddelbart livreddende førstehjelp og tilkalte medisinske evakueringshelikoptre.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 					<div class="sg-11">
 						<h2>Column 3</h2>
-						<image src="http://placekitten.com/308/100" />
-						<p>Én av afghanerne døde av skadene på stedet, mens den andre var lettere skadd og ble evakuert med helikopter til behandling ved det norske feltsykehuset i Maimana. De to afghanerne jobbet for et rørleggerfirma i Maimana, og deres familier vil bli fulgt opp, opplyser Forsvaret. Saken vil bli etterforsket av norsk militærpoliti i samarbeid med afghansk politi.</p>
+						<iframe src="http://www.youtube.com/embed/-6S5caRGpK4" width="320" height="190"></iframe>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
 					</div>
 				</div>
 				
 				<div class="clear"></div>					
 				
 				<footer class="sg-23">
-					<p>&copy; Copyright 2011 by Embigo</p>
+					<p>&copy; Copyright 2011 by Miles AS</p>
 				</footer>
 				
 				<div class="clear"></div>

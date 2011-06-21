@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Video-canvas test</title>
+    <script>
+	document.addEventListener('DOMContentLoaded', function(){
+	    var v = document.getElementById('v');
+	    var canvas = document.getElementById('c');
+	    var context = canvas.getContext('2d');
+
+	    var cw = Math.floor(canvas.clientWidth / 100);
+	    var ch = Math.floor(canvas.clientHeight / 100);
+	    canvas.width = cw;
+	    canvas.height = ch;
+
+	    v.addEventListener('play', function(){
+	        draw(this,context,cw,ch);
+	    },false);
+
+	},false);
+
+	function draw(v,c,w,h) {
+	    if(v.paused || v.ended) return false;
+	    c.drawImage(v,0,0,w,h);
+	    setTimeout(draw,20,v,c,w,h);
+	}
+	</script>
+	<style>
+	body {
+	    background: black;
+	}
+
+	#c {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    width: 100%;
+	    height: 100%;
+	}
+
+	#v {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin: -180px 0 0 -240px;
+	}
+    </style>
+	<link rel="stylesheet" type="text/css" href="css/squaregrid.css" />
+
+  </head>
+  <body>
+	<canvas id="c"></canvas>
+    <video id="v" style="border:2px solid gray; background:black" width="500" height="300" src="media/evil.webm" autobuffer controls loop poster="media/evil.jpg">
+		<p>Try this page in a browser that supports HTML5.</p>
+	</video>
+  </body>
+</html>
