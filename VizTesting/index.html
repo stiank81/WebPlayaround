@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Video-canvas test</title>
+
+	<link rel="stylesheet" type="text/css" href="css/squaregrid.css" />
+	<script type="text/javascript" src="js/jquery-1.6.1.js"></script>
+
+
+    <script>
+		function setupButtonAction(){
+			$('#playBtn').click(function(){
+				$('#videoelm').player.play(); // What's the right function for this...? 
+			});			
+		}
+		
+		function fillImageInCanvas(frameNumber){
+			var ctx = document.getElementById('overlay').getContext('2d');  
+			var img = new Image(); 
+			img.onload = function(){
+				ctx.drawImage(img, 0, 0, 800, 450);
+			};
+			img.src = "output/vizscene" + frameNumber + ".png"; 
+		}
+		
+		function clearImageInCanvas(){
+			var ctx = document.getElementById('overlay').getContext('2d');  
+			ctx.clearRect(0, 0, 800, 450); 
+		}
+		
+		currentFrame = 0; 
+		
+		function toggleAnimation(){
+			clearImageInCanvas();
+			currentFrame = 0;
+			fillImageInCanvas(currentFrame);   
+				startAnimation();
+		}
+		
+		function fillNextFrameInCanvas(){
+			currentFrame += 1; 
+			// clearImageInCanvas(); 
+			fillImageInCanvas(currentFrame);
+		}
+		
+		function startAnimation(){
+			setInterval(fillNextFrameInCanvas, 50);
+			// setTimeout = interval * numberOfFrames; +1? 		    	
+		}
+		
+		$(document).ready(function() {
+			setupButtonAction(); 
+		});
+		
+	</script>
+	
+	<style>
+		video
+		{
+			z-index:-1;
+		}
+		
+		canvas
+		{
+			position:absolute;
+			left:0px;
+			top:0px;
+		}
+	</style>
+  </head>
+
+  <body>
+	<video z-index="-1" id="videoelm" style="background:black" width="800" height="500" src="media/evil.webm" controls poster="media/evil.jpg">
+		<p>Try this page in a browser that supports HTML5.</p>
+	</video>
+	<canvas id="overlay" width="800" height="450"></canvas>
+	<div class="clear"></div>
+	<button id="toggleBtn" onclick="toggleAnimation()">Start animation</button>
+	<button id="playBtn">Play</button>
+  </body>
+</html>
