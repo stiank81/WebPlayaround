@@ -1,0 +1,7 @@
+C:\prg\WebPlayaround\Moovii\Moovii\bin\Moovii.dll
+C:\prg\WebPlayaround\Moovii\Moovii\bin\Moovii.pdb
+C:\prg\WebPlayaround\Moovii\Moovii\bin\EntityFramework.dll
+C:\prg\WebPlayaround\Moovii\Moovii\bin\EntityFramework.xml
+C:\prg\WebPlayaround\Moovii\Moovii\obj\Debug\ResolveAssemblyReference.cache
+C:\prg\WebPlayaround\Moovii\Moovii\obj\Debug\Moovii.dll
+C:\prg\WebPlayaround\Moovii\Moovii\obj\Debug\Moovii.pdb
