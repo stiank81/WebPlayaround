@@ -1,0 +1,14 @@
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\StringCalc.pdb
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\nunit.framework.dll
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\nunit.framework.xml
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\StringCalc.pdb
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\StringCalc.dll
+Z:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\StringCalc.dll
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\StringCalc.dll
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\StringCalc.pdb
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\nunit.framework.dll
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\bin\Debug\nunit.framework.xml
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\StringCalc.dll
+C:\dev\WebPlayaround\unweb\StringCalc\StringCalc\obj\x86\Debug\StringCalc.pdb
