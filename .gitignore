@@ -1,0 +1,17 @@
+*/bin/
+*/obj/
+*/Tests/bin/
+*/Tests/obj/
+*.suo
+*.ReSharper.user
+_ReSharper*
+*StyleCop.Cache
+*.orig
+*.pidb
+*.userprefs
+*.webm
+*.avi
+*.mp4
+*.mv4
+*.mov
+.DS_Store
